@@ -86,7 +86,7 @@ typedef struct passinfo
 	int
 		linecount_flag;
 	char *fname;
-	ilist_t *env;
+	list_t *env;
 	list_t *history;
 	list_t *alias;
 	char **environ;
@@ -136,7 +136,7 @@ int loophsh(char **);
 void _eputs(char *);
 int _eputchar(char);
 int _putfd(char c, int fd);
-int _putfd(char *str, int fd);
+int _putsfd(char *str, int fd);
 
 /* toem_string.c */
 int _strlen(char *);
@@ -153,7 +153,7 @@ int _putchar(char);
 /* toem_exits.c */
 char *_strncpy(char *, char *, int);
 char *_strncat(char *, char *, int);
-cahr *_strchr(char *, char);
+char *_strchr(char *, char);
 
 /* toem_tokenizer.c */
 char **strtow(char *, char *);
@@ -208,7 +208,7 @@ int populate_env_list(info_t *);
 
 /* toem_getenv.c */
 char **get_environ(info_t *);
-int _unsetenv((info_t *, char *, char *);
+int _unsetenv(info_t *, char *);
 int _setenv(info_t *, char *, char *);
 
 /* toem_history.c */
