@@ -22,6 +22,8 @@ int main(void)
 	char command[MAX_COMMAND_LENGTH];
 	char *args[10];
 	int numArgs;
+	char *token;
+	pid_t pid;
 
 	while (1)
 	{
@@ -30,7 +32,7 @@ int main(void)
 
 		command[strcspn(command, "\n")] = '\0';
 
-		char *token = strtok(command, " ");
+		token = strtok(command, " ");
 
 		numArgs = 0;
 
@@ -50,7 +52,7 @@ int main(void)
 			printf("Exiting the shell\n");
 			exit(0);
 		}
-		pid_t pid = fork();
+		pid = fork();
 
 		if (pid < 0)
 		{

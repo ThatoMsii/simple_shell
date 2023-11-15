@@ -13,9 +13,10 @@
 #define MAX_INPUT_LENGTH 1024
 extern char **environ;
 
-int main(int argc, char *argv[])
+int main(void)
 {
 	char input[MAX_INPUT_LENGTH];
+	size_t input_length;
 
 	while (1)
 	{
@@ -26,7 +27,7 @@ int main(int argc, char *argv[])
 			perror("fgets");
 			exit(EXIT_FAILURE);
 		}
-		size_t input_length = strlen(input);
+		input_length = strlen(input);
 
 		if (input_length > 0 && input[input_length - 1] == '\n')
 	{

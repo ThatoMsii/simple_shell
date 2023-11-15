@@ -14,8 +14,10 @@
  */
 void parse_command(char *input, char **args, int *arg_count)
 {
+	char *token;
+
 	*arg_count = 0;
-	char *token = strtok(input, " \t\n");
+	token = strtok(input, " \t\n");
 
 	while (token != NULL)
 	{
@@ -27,7 +29,10 @@ void parse_command(char *input, char **args, int *arg_count)
 
 void free_args(char **args, int arg_count)
 {
-	for (int i = 0; i < arg_count; i++)
+	int i;
+
+	for (i = 0; i < arg_count; i++)
+		
 	{
 		free(args[i]);
 	}
@@ -37,6 +42,7 @@ void run_shell(void)
 	char input[MAX_INPUT_SIZE];
 	char *args[MAX_INPUT_SIZE];
 	int arg_count;
+	pid_t pid;
 
 	while (1)
 	{
@@ -55,7 +61,7 @@ void run_shell(void)
 		{
 			break;
 		}
-		pid_t pid = fork();
+		pid = fork();
 
 		if (pid == 0)
 		{

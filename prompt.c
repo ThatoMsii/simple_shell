@@ -43,6 +43,8 @@ int main(void)
 }
 void execute_command(char *command)
 {
+	char exec_error[20];
+	char *args[2];
 	pid_t child_pid = fork();
 
 	if (child_pid == -1)
@@ -52,10 +54,11 @@ void execute_command(char *command)
 	}
 	else if (child_pid == 0)
 	{
-		char *args[] = {command, NULL};
+		args[0] = command;
+	        args[1] = NULL;
 
 		execve(command, args, NULL);
-		char exec_error[] = "execve error\n";
+		strcpy(exec_error, "execve error\n");
 
 		write(fileno(stdout), exec_error, strlen(exec_error));
 		exit(1);

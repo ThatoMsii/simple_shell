@@ -59,9 +59,9 @@ void print_error(info_t *info, char *estr)
  */
 int print_d(int input, int fd)
 {
-	int (*__putchar);
-	(char) = _putchar;
-	int i, count = 0;
+	int (*__putchar) (char) = _putchar;
+	int i;
+	int count = 0;
 	unsigned int _abs_, current;
 
 	if (fd == STDERR_FILENO)

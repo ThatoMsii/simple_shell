@@ -47,7 +47,7 @@ int _myexit(info_t *info)
 int _mycd(info_t *info)
 {
 	char *s, *dir, buffer[1024];
-	int chdidir_ret;
+	int chdir_ret;
 
 	s = getcwd(buffer, 1024);
 
@@ -95,10 +95,10 @@ int _mycd(info_t *info)
 	else
 	{
 
-		_setenv(info, "OLDPWD");
+		_setenv(info, "OLDPWD","str");
 		_getenv(info, "PWD=");
 
-		_setenv(info, "PWD");
+		_setenv(info, "PWD","str");
 		getcwd(buffer, 1024);
 	}
 	return (0);
